@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RAVEN - GPS-Independent Autonomous Navigation System for Drones">
+    <title>RAVEN | GPS-Independent Drone Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">RAVEN</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#problem" class="nav-link">Problem</a></li>
+                <li><a href="#solution" class="nav-link">Solution</a></li>
+                <li><a href="#technology" class="nav-link">Technology</a></li>
+                <li><a href="#impact" class="nav-link">Impact</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="grid-overlay"></div>
+            <canvas id="particle-canvas"></canvas>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>TED University Research Project</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">GPS-Independent</span>
+                <span class="title-line gradient-text">Autonomous Navigation</span>
+                <span class="title-line">for Drones</span>
+            </h1>
+            <p class="hero-subtitle">Revolutionary positioning system combining LIDAR, computer vision, and AI to enable safe drone operations in GPS-denied environments</p>
+            <div class="hero-buttons">
+                <a href="#solution" class="btn btn-primary">
+                    <span>Explore Technology</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#team" class="btn btn-secondary">
+                    <span>Meet the Team</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">100m</div>
+                    <div class="stat-label">Operational Altitude</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number">Multi-Sensor</div>
+                    <div class="stat-label">Fusion System</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number">AI-Powered</div>
+                    <div class="stat-label">Positioning</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">The Challenge</span>
+                <h2 class="section-title">GPS Dependency Creates <span class="gradient-text">Critical Vulnerabilities</span></h2>
+                <p class="section-subtitle">Modern UAVs face significant operational risks when GPS signals are compromised</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card" data-aos="fade-up" data-delay="0">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 5L23 15H33L25 21L28 31L20 25L12 31L15 21L7 15H17L20 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>GPS Jamming</h3>
+                    <p>Hostile interference can block GPS signals, leaving drones unable to determine their position or navigate safely</p>
+                    <div class="problem-severity high">Critical Risk</div>
+                </div>
+
+                <div class="problem-card" data-aos="fade-up" data-delay="100">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5 20 5C11.7157 5 5 11.7157 5 20C5 28.2843 11.7157 35 20 35Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M20 15V25M20 25L25 20M20 25L15 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>GPS Spoofing</h3>
+                    <p>Malicious actors can send false GPS signals, misleading drones to incorrect locations and compromising missions</p>
+                    <div class="problem-severity high">Critical Risk</div>
+                </div>
+
+                <div class="problem-card" data-aos="fade-up" data-delay="200">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 5V35M5 20H35M10 10L30 30M30 10L10 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Mission Failure</h3>
+                    <p>Loss of accurate positioning leads to failed operations, increased risks, and compromised safety in critical missions</p>
+                    <div class="problem-severity medium">High Impact</div>
+                </div>
+            </div>
+
+            <div class="impact-visual">
+                <div class="impact-content">
+                    <h3>The Real-World Impact</h3>
+                    <div class="impact-stats">
+                        <div class="impact-stat">
+                            <div class="impact-number">78%</div>
+                            <div class="impact-text">of military UAVs rely solely on GPS</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="impact-number">Critical</div>
+                            <div class="impact-text">vulnerability in defense operations</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="impact-number">Limited</div>
+                            <div class="impact-text">alternatives for GPS-denied areas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Innovation</span>
+                <h2 class="section-title">Multi-Sensor Fusion for <span class="gradient-text">Autonomous Navigation</span></h2>
+                <p class="section-subtitle">Combining cutting-edge sensors with AI-powered processing for reliable positioning without GPS</p>
+            </div>
+
+            <div class="solution-architecture">
+                <div class="architecture-diagram">
+                    <div class="arch-layer" data-aos="fade-right" data-delay="0">
+                        <div class="arch-title">Data Collection</div>
+                        <div class="arch-components">
+                            <div class="arch-component">Visual Imaging</div>
+                            <div class="arch-component">LIDAR Scanning</div>
+                            <div class="arch-component">IMU Sensors</div>
+                            <div class="arch-component">Barometer</div>
+                        </div>
+                    </div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-layer" data-aos="fade-right" data-delay="200">
+                        <div class="arch-title">AI Processing</div>
+                        <div class="arch-components">
+                            <div class="arch-component">Deep Learning</div>
+                            <div class="arch-component">Image Recognition</div>
+                            <div class="arch-component">Sensor Fusion</div>
+                        </div>
+                    </div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-layer" data-aos="fade-right" data-delay="400">
+                        <div class="arch-title">Navigation Output</div>
+                        <div class="arch-components">
+                            <div class="arch-component highlight">Precise Position</div>
+                            <div class="arch-component highlight">Altitude Control</div>
+                            <div class="arch-component highlight">Safe Navigation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution-features">
+                <div class="feature-card" data-aos="zoom-in" data-delay="0">
+                    <div class="feature-number">01</div>
+                    <h3>Computer Vision</h3>
+                    <p>Advanced image processing techniques analyze real-time drone footage to identify location markers and terrain features for accurate positioning on pre-loaded maps</p>
+                    <div class="feature-tech">
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Image Processing</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-aos="zoom-in" data-delay="100">
+                    <div class="feature-number">02</div>
+                    <h3>LIDAR Mapping</h3>
+                    <p>TF03 LIDAR sensor provides detailed topography and structure height measurements, creating a 3D understanding of the environment for precise navigation</p>
+                    <div class="feature-tech">
+                        <span class="tech-tag">TF03 LIDAR</span>
+                        <span class="tech-tag">3D Mapping</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-aos="zoom-in" data-delay="200">
+                    <div class="feature-number">03</div>
+                    <h3>Inertial Navigation</h3>
+                    <p>Barometer and IMU sensors continuously track real-time altitude and orientation, providing stable flight control even without external positioning signals</p>
+                    <div class="feature-tech">
+                        <span class="tech-tag">IMU</span>
+                        <span class="tech-tag">Barometer</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-aos="zoom-in" data-delay="300">
+                    <div class="feature-number">04</div>
+                    <h3>Intelligent Prediction</h3>
+                    <p>When GPS fails, the system uses last known position and mission route data to narrow down possible location zones and enhance navigation accuracy</p>
+                    <div class="feature-tech">
+                        <span class="tech-tag">ML Algorithms</span>
+                        <span class="tech-tag">Predictive Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="tech-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Technical Stack</span>
+                <h2 class="section-title">Powered by <span class="gradient-text">Advanced Technologies</span></h2>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-category" data-aos="fade-up" data-delay="0">
+                    <div class="tech-category-header">
+                        <h3>Hardware Components</h3>
+                    </div>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>TF03 LIDAR</h4>
+                                <p>High-precision terrain measurement</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>IMU Sensors</h4>
+                                <p>6-axis motion tracking</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>Barometer</h4>
+                                <p>Accurate altitude sensing</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>HD Camera</h4>
+                                <p>100m altitude imagery</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category" data-aos="fade-up" data-delay="100">
+                    <div class="tech-category-header">
+                        <h3>Software & AI</h3>
+                    </div>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>Deep Learning</h4>
+                                <p>Neural network-based positioning</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>Computer Vision</h4>
+                                <p>Real-time image analysis</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>Sensor Fusion</h4>
+                                <p>Multi-source data integration</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>Open Source</h4>
+                                <p>Cost-effective & scalable</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category" data-aos="fade-up" data-delay="200">
+                    <div class="tech-category-header">
+                        <h3>Key Capabilities</h3>
+                    </div>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>GPS-Independent</h4>
+                                <p>Full autonomy without GPS</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>Jamming Resistant</h4>
+                                <p>Immune to RF interference</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>Real-time Processing</h4>
+                                <p>Instant position calculation</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">◆</div>
+                            <div class="tech-info">
+                                <h4>Adaptive Learning</h4>
+                                <p>Continuous improvement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Strategic Value</span>
+                <h2 class="section-title">Transforming <span class="gradient-text">Critical Operations</span></h2>
+                <p class="section-subtitle">Enabling safe and reliable drone operations across defense and civilian applications</p>
+            </div>
+
+            <div class="impact-areas">
+                <div class="impact-area" data-aos="slide-up" data-delay="0">
+                    <div class="impact-area-icon defense">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+                            <path d="M25 5L40 12.5V22.5C40 32.5 35 42.5 25 45C15 42.5 10 32.5 10 22.5V12.5L25 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Defense & Security</h3>
+                    <ul class="impact-list">
+                        <li>Resilient navigation in GPS-denied combat zones</li>
+                        <li>Protection against jamming and spoofing attacks</li>
+                        <li>Continuous operational capability during RF interference</li>
+                        <li>Enhanced mission success and platform safety</li>
+                    </ul>
+                </div>
+
+                <div class="impact-area" data-aos="slide-up" data-delay="200">
+                    <div class="impact-area-icon civilian">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+                            <path d="M25 45C35.4934 45 44 36.4934 44 26C44 15.5066 35.4934 7 25 7C14.5066 7 6 15.5066 6 26C6 36.4934 14.5066 45 25 45Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M25 16V26L32 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Civilian Applications</h3>
+                    <ul class="impact-list">
+                        <li>Safe operations in forests, mines, and disaster zones</li>
+                        <li>Reliable navigation in GPS-limited environments</li>
+                        <li>Search and rescue in challenging terrain</li>
+                        <li>Infrastructure inspection in remote areas</li>
+                    </ul>
+                </div>
+
+                <div class="impact-area" data-aos="slide-up" data-delay="400">
+                    <div class="impact-area-icon innovation">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+                            <path d="M25 10L30 22H42L32 30L37 42L25 34L13 42L18 30L8 22H20L25 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Innovation & Scale</h3>
+                    <ul class="impact-list">
+                        <li>Cost-effective solution for mid-budget projects</li>
+                        <li>Rapid prototyping and field testing capabilities</li>
+                        <li>Scalable architecture for widespread adoption</li>
+                        <li>Open-source foundation for community development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="strategic-benefits">
+                <h3>Strategic Benefits</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✓</div>
+                        <p>Eliminates GPS dependency for critical missions</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✓</div>
+                        <p>Ensures operational continuity during signal disruption</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✓</div>
+                        <p>Provides sustainable innovation for defense and civilian sectors</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✓</div>
+                        <p>Offers cost-effective alternative to proprietary systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">The Team</span>
+                <h2 class="section-title">Meet the <span class="gradient-text">Innovators</span></h2>
+                <p class="section-subtitle">Computer Engineering students at TED University pushing the boundaries of autonomous navigation</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card" data-aos="flip-up" data-delay="0">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">AA</div>
+                    </div>
+                    <h3>Aysel Arpacı</h3>
+                    <p class="team-role">Computer Engineering Student</p>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">TED University</p>
+                </div>
+
+                <div class="team-card" data-aos="flip-up" data-delay="100">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">MC</div>
+                    </div>
+                    <h3>Metehan Can</h3>
+                    <p class="team-role">Computer Engineering Student</p>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">TED University</p>
+                </div>
+
+                <div class="team-card" data-aos="flip-up" data-delay="200">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">MT</div>
+                    </div>
+                    <h3>Mert Temür</h3>
+                    <p class="team-role">Computer Engineering Student</p>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">TED University</p>
+                </div>
+
+                <div class="team-card" data-aos="flip-up" data-delay="300">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">UU</div>
+                    </div>
+                    <h3>Umut Uygur</h3>
+                    <p class="team-role">Computer Engineering Student</p>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">TED University</p>
+                </div>
+
+                <div class="team-card" data-aos="flip-up" data-delay="400">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">TD</div>
+                    </div>
+                    <h3>Türkay Selim Delikanlı</h3>
+                    <p class="team-role">Computer Engineering Student</p>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">TED University</p>
+                </div>
+            </div>
+
+            <div class="advisor-section">
+                <h3>Project Advisor</h3>
+                <div class="advisor-card">
+                    <div class="advisor-avatar">
+                        <div class="avatar-placeholder advisor">GNY</div>
+                    </div>
+                    <div class="advisor-info">
+                        <h4>Prof. Dr. Gökçe Nur Yılmaz</h4>
+                        <p>Department Chair, Computer Engineering</p>
+                        <p class="advisor-institution">TED University</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">◆</span>
+                        <span class="logo-text">RAVEN</span>
+                    </div>
+                    <p>GPS-Independent Autonomous Navigation System</p>
+                </div>
+                <div class="footer-info">
+                    <h4>Project Information</h4>
+                    <p>Senior Project - Computer Engineering</p>
+                    <p>TED University</p>
+                    <p>2024-2025 Academic Year</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RAVEN Project Team. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

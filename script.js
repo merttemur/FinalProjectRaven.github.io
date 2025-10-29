@@ -1,10 +1,10 @@
-// ===== Particle Background =====
+// ===== Subtle Particle Background =====
 class ParticleBackground {
     constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.particles = [];
-        this.particleCount = 80;
+        this.particleCount = 60;
         this.connectionDistance = 150;
 
         this.resize();
@@ -25,8 +25,8 @@ class ParticleBackground {
             this.particles.push({
                 x: Math.random() * this.canvas.width,
                 y: Math.random() * this.canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
                 radius: Math.random() * 2 + 1
             });
         }
@@ -48,7 +48,7 @@ class ParticleBackground {
             // Draw particle
             this.ctx.beginPath();
             this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-            this.ctx.fillStyle = 'rgba(102, 126, 234, 0.5)';
+            this.ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
             this.ctx.fill();
 
             // Draw connections
@@ -58,9 +58,9 @@ class ParticleBackground {
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
                 if (distance < this.connectionDistance) {
-                    const opacity = (1 - distance / this.connectionDistance) * 0.3;
+                    const opacity = (1 - distance / this.connectionDistance) * 0.15;
                     this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(102, 126, 234, ${opacity})`;
+                    this.ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
                     this.ctx.lineWidth = 1;
                     this.ctx.moveTo(particle.x, particle.y);
                     this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
@@ -278,7 +278,7 @@ class ParallaxEffect {
     }
 }
 
-// ===== Card Tilt Effect =====
+// ===== Aggressive Card Effects =====
 class CardTilt {
     constructor() {
         this.cards = document.querySelectorAll('.problem-card, .feature-card, .team-card');
@@ -287,54 +287,25 @@ class CardTilt {
 
     init() {
         this.cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => this.handleMouseMove(e, card));
+            card.addEventListener('mouseenter', () => this.handleMouseEnter(card));
             card.addEventListener('mouseleave', () => this.handleMouseLeave(card));
         });
     }
 
-    handleMouseMove(e, card) {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    handleMouseEnter(card) {
+        card.style.transform = 'translateX(10px) scale(1.02)';
+        card.style.transition = 'all 0.1s ease';
     }
 
     handleMouseLeave(card) {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        card.style.transform = 'translateX(0) scale(1)';
     }
 }
 
-// ===== Typing Effect for Hero =====
-class TypingEffect {
+// ===== Subtle Text Highlight =====
+class SubtleHighlight {
     constructor() {
-        this.elements = document.querySelectorAll('.title-line');
-        this.init();
-    }
-
-    init() {
-        this.elements.forEach((element, index) => {
-            const text = element.textContent;
-            element.textContent = '';
-            element.style.opacity = '1';
-
-            setTimeout(() => {
-                this.typeText(element, text, 0);
-            }, index * 500);
-        });
-    }
-
-    typeText(element, text, index) {
-        if (index < text.length) {
-            element.textContent += text.charAt(index);
-            setTimeout(() => this.typeText(element, text, index + 1), 50);
-        }
+        // Subtle professional effect - no implementation needed
     }
 }
 
@@ -532,25 +503,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add cursor follower effect (optional)
-    createCursorFollower();
+    // Cursor effect disabled for professional appearance
+    // createCursorFollower();
 });
 
-// ===== Cursor Follower Effect =====
+// ===== Tactical Crosshair Cursor =====
 function createCursorFollower() {
     const cursor = document.createElement('div');
     cursor.className = 'cursor-follower';
     cursor.style.cssText = `
         position: fixed;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: rgba(102, 126, 234, 0.3);
+        width: 30px;
+        height: 30px;
+        border: 2px solid rgba(255, 0, 51, 0.6);
         pointer-events: none;
         z-index: 9999;
-        transition: transform 0.2s ease;
+        transition: all 0.1s ease;
         display: none;
+        mix-blend-mode: difference;
     `;
+
+    // Add crosshair lines
+    cursor.innerHTML = `
+        <div style="position: absolute; width: 2px; height: 100%; background: rgba(255, 0, 51, 0.6); left: 50%; transform: translateX(-50%);"></div>
+        <div style="position: absolute; height: 2px; width: 100%; background: rgba(255, 0, 51, 0.6); top: 50%; transform: translateY(-50%);"></div>
+    `;
+
     document.body.appendChild(cursor);
 
     // Only show on desktop
@@ -558,17 +536,19 @@ function createCursorFollower() {
         cursor.style.display = 'block';
 
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
+            cursor.style.left = e.clientX - 15 + 'px';
+            cursor.style.top = e.clientY - 15 + 'px';
         });
 
         // Scale up on interactive elements
         document.querySelectorAll('a, button, .btn').forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(2)';
+                cursor.style.transform = 'scale(1.5)';
+                cursor.style.borderColor = 'rgba(0, 255, 65, 0.8)';
             });
             el.addEventListener('mouseleave', () => {
                 cursor.style.transform = 'scale(1)';
+                cursor.style.borderColor = 'rgba(255, 0, 51, 0.6)';
             });
         });
     }
@@ -600,6 +580,6 @@ function createCursorFollower() {
 })();
 
 // ===== Print Console Message =====
-console.log('%c RAVEN Project ', 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 20px; padding: 10px 20px; border-radius: 5px;');
-console.log('%c GPS-Independent Autonomous Navigation System ', 'color: #667eea; font-size: 14px; font-weight: bold;');
+console.log('%c RAVEN Project ', 'background: #002244; color: white; font-size: 18px; padding: 10px 20px; font-weight: bold;');
+console.log('%c GPS-Independent Autonomous Navigation System ', 'color: #0066cc; font-size: 14px; font-weight: bold;');
 console.log('%c Developed by TED University Computer Engineering Students ', 'color: #666; font-size: 12px;');
